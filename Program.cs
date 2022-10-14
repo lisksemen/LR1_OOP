@@ -1,7 +1,27 @@
-﻿class Hello
+﻿namespace LR1;
+class Test
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
-        System.Console.WriteLine("Hello World!");
+       GameAccount FirstPlayer = new("Tarik");
+       GameAccount SecondPlayer = new("Tarak");
+
+       for (int i = 0; i < 10; i++)
+        {
+            if (i % 2 == 0)
+            {
+                FirstPlayer.WinGame(SecondPlayer.UserName, i);
+                SecondPlayer.LoseGame(FirstPlayer.UserName, i);
+                continue;
+            }
+            FirstPlayer.LoseGame(SecondPlayer.UserName, i);
+            SecondPlayer.WinGame(FirstPlayer.UserName, i);
+        }
+
+        Console.WriteLine("-----------------------");
+        FirstPlayer.GetStats();
+
+        Console.WriteLine("-----------------------");
+        SecondPlayer.GetStats();
     }
 }
